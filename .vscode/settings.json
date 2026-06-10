@@ -1,0 +1,12 @@
+{
+    "python.analysis.include": [
+        "../core/homeassistant"
+    ],
+    "python.analysis.extraPaths": [
+        "../core/homeassistant"
+    ],
+    "[python]": {
+        "editor.defaultFormatter": "ms-python.black-formatter",
+        "editor.formatOnSave": false
+    }
+}
