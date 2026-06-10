@@ -10,7 +10,7 @@
         }
     ],
     "codeowners": [
-        "@arbuzov"
+        "@pipitapi"
     ],
     "config_flow": true,
     "dependencies": [
