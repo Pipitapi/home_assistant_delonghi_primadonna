@@ -567,6 +567,10 @@ class DelongiPrimadonna:
         """Turn the device on."""
         await self.send_command(BYTES_POWER)
 
+    async def power_off(self) -> None:
+        """Turn the device off."""
+        await self.send_command(BYTES_POWER_OFF)
+
     async def cup_light_on(self) -> None:
         """Turn the cup light on."""
         self.switches.cup_light = True
