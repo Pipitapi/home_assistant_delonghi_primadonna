@@ -39,6 +39,9 @@
     "button": {
       "power_on": {
         "name": "Bekapcsol"
+     },
+       "power_off": {
+        "name": "Kikapcsol"
       }
     },
     "switch": {
