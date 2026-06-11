@@ -39,7 +39,7 @@
     "button": {
         "power_toggle": {
             "name": "Be/Kikapcsol"
-        }
+      }
     },
     "switch": {
       "cup_light": {
