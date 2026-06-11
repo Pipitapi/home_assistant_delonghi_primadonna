@@ -37,8 +37,8 @@
       }
     },
     "button": {
-        "power_toggle": {
-            "name": "Be/Kikapcsol"
+      "power_toggle": {
+        "name": "Be/Kikapcsol"
       }
     },
     "switch": {
