@@ -19,29 +19,21 @@ async def async_setup_entry(
 ) -> None:
     """Register button entities for a config entry."""
     device: DelongiPrimadonna = hass.data[DOMAIN][entry.unique_id]
-    async_add_entities([
-        DelongiPrimadonnaPowerOnButton(device, hass),
-        DelongiPrimadonnaPowerOffButton(device, hass),
-    ])
+    async_add_entities([DelongiPrimadonnaPowerToggleButton(device, hass)])
 
 
-class DelongiPrimadonnaPowerOnButton(DelonghiDeviceEntity, ButtonEntity):
-    """Button to turn on the coffee machine."""
+class DelongiPrimadonnaPowerToggleButton(DelonghiDeviceEntity, ButtonEntity):
+    """Button to toggle the coffee machine on/off."""
 
-    _attr_icon = "mdi:power"
-    _attr_translation_key = "power_on"
+    _attr_translation_key = "power_toggle"
 
-    async def async_press(self, **kwargs: Any) -> None:
-        """Handle the button press."""
-        await self.device.power_on()
-
-
-class DelongiPrimadonnaPowerOffButton(DelonghiDeviceEntity, ButtonEntity):
-    """Button to turn off the coffee machine."""
-
-    _attr_icon = "mdi:power-off"
-    _attr_translation_key = "power_off"
+    @property
+    def icon(self) -> str:
+        return "mdi:power" if self.device.switches.is_on else "mdi:power-off"
 
     async def async_press(self, **kwargs: Any) -> None:
-        """Handle the button press."""
-        await self.device.power_off()
+        """Toggle power based on current state."""
+        if self.device.switches.is_on:
+            await self.device.power_off()
+        else:
+            await self.device.power_on()
