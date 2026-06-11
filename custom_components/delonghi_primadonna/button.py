@@ -1,4 +1,6 @@
-"""Button entity definitions for Delonghi Primadonna."""
+"""Button entities for Delonghi Primadonna."""
+
+from typing import Any
 
 from homeassistant.components.button import ButtonEntity
 from homeassistant.config_entries import ConfigEntry
@@ -13,19 +15,19 @@ from .device import DelongiPrimadonna
 async def async_setup_entry(
     hass: HomeAssistant,
     entry: ConfigEntry,
-    async_add_entities: AddEntitiesCallback
-):
-    """Set up button entities for a config entry."""
-
-    delongh_device: DelongiPrimadonna = hass.data[DOMAIN][entry.unique_id]
-    async_add_entities([DelongiPrimadonnaPowerButton(delongh_device, hass)])
-    return True
+    async_add_entities: AddEntitiesCallback,
+) -> None:
+    """Register button entities for a config entry."""
+    device: DelongiPrimadonna = hass.data[DOMAIN][entry.unique_id]
+    async_add_entities([DelongiPrimadonnaPowerOffButton(device, hass)])
 
 
-class DelongiPrimadonnaPowerButton(DelonghiDeviceEntity, ButtonEntity):
-    """This button turns on the device"""
+class DelongiPrimadonnaPowerOffButton(DelonghiDeviceEntity, ButtonEntity):
+    """Button to turn off the coffee machine."""
 
-    _attr_translation_key = 'power_on'
+    _attr_icon = "mdi:power"
+    _attr_translation_key = "power_off"
 
-    async def async_press(self):
-        self.hass.async_create_task(self.device.power_on())
+    async def async_press(self, **kwargs: Any) -> None:
+        """Handle the button press."""
+        await self.device.power_off()
