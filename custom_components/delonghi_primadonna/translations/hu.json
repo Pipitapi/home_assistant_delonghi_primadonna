@@ -37,12 +37,9 @@
       }
     },
     "button": {
-      "power_on": {
-        "name": "Bekapcsol"
-     },
-       "power_off": {
-        "name": "Kikapcsol"
-      }
+        "power_toggle": {
+            "name": "Be/Kikapcsol"
+        }
     },
     "switch": {
       "cup_light": {
