@@ -69,12 +69,12 @@ class DelongiPrimadonnaCupLightSwitch(
 
     async def async_turn_on(self, **kwargs: Any) -> None:
         """Turn the device on."""
-        self.hass.async_create_task(self.device.cup_light_on())
+        await self.device.cup_light_on()
         self._attr_is_on = True
 
     async def async_turn_off(self, **kwargs: Any) -> None:
         """Turn the device off."""
-        self.hass.async_create_task(self.device.cup_light_off())
+        await self.device.cup_light_off()
         self._attr_is_on = False
 
 
@@ -133,12 +133,12 @@ class DelongiPrimadonnaPowerSaveSwitch(
 
     async def async_turn_on(self, **kwargs: Any) -> None:
         """Turn the energy save on"""
-        self.hass.async_create_task(self.device.energy_save_on())
+        await self.device.energy_save_on()
         self._attr_is_on = True
 
     async def async_turn_off(self, **kwargs: Any) -> None:
         """Turn the energy save off"""
-        self.hass.async_create_task(self.device.energy_save_off())
+        await self.device.energy_save_off()
         self._attr_is_on = False
 
 
@@ -162,12 +162,12 @@ class DelongiPrimadonnaSoundsSwitch(
 
     async def async_turn_on(self, **kwargs: Any) -> None:
         """Turn the sounds on."""
-        self.hass.async_create_task(self.device.sound_alarm_on())
+        await self.device.sound_alarm_on()
         self._attr_is_on = True
 
     async def async_turn_off(self, **kwargs: Any) -> None:
         """Turn the sounds off."""
-        self.hass.async_create_task(self.device.sound_alarm_off())
+        await self.device.sound_alarm_off()
         self._attr_is_on = False
 
 
